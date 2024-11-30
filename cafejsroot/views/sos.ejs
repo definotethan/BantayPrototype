@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <!-- Set character encoding for the document -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive design for mobile devices -->
+    <title>SOS Page</title> <!-- Title of the page displayed in the browser tab -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet"> <!-- Link to Google Fonts for styling -->
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif; /* Set the font for the body */
+        }
+        .sos-button {
+            width: 300px; /* Set the width of the button */
+            height: 300px; /* Set the height of the button */
+            border-radius: 50%; /* Make it a circle */
+            background-color: red; /* Background color */
+            color: white; /* Text color */
+            font-size: 50px; /* Font size */
+            border: none; /* Remove border */
+            cursor: pointer; /* Change cursor on hover */
+            display: flex; /* Center text */
+            align-items: center; /* Center text vertically */
+            justify-content: center; /* Center text horizontally */
+            margin: 20px; /* Add some margin */
+        }
+        #message {
+            display: none; /* Initially hidden */
+            margin-top: 20px; /* Add some space above */
+            white-space: pre-wrap; /* Preserve whitespace for formatting */
+        }
+        .button-container {
+            display: flex; /* Use flexbox for centering */
+            flex-direction: column; /* Stack buttons vertically */
+            align-items: center; /* Center items horizontally */
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello, <%= username %>!</h1> <!-- Greet the user with their username passed from the server -->
+    <div class="button-container"> <!-- Container for buttons and message display -->
+        <button class="sos-button" onclick="sendEmergencyMessage()">SOS</button> <!-- SOS button styled as a red circle -->
+        <div id="message"></div> <!-- Placeholder for displaying the emergency message -->
+        <a href="/safety-map"> <!-- Link to the safety map page -->
+            <img src="map icon.png" alt="Safety Map" style="width: 50px; height: auto; margin-top: 20px; cursor: pointer;" /> <!-- Image link to the safety map -->
+        </a>
+    </div>
+
+    <script>
+        function sendEmergencyMessage() { // Function to handle sending the emergency message
+            const username = "<%= username %>"; // Get the username from EJS template
+            const currentLocation = "https://www.google.com/maps/place/Your+Location"; // Placeholder for the user's current location
+            const timestamp = new Date().toLocaleString(); // Get the current date and time in a readable format
+
+            // Construct the emergency message with relevant details
+            const message = `THE FOLLOWING MESSAGE HAS BEEN SENT OUT: 
+
+"[URGENT ALERT]:
+- This is a safety alert from BANTAY. ${username} has triggered an emergency.
+- Current Location: ${currentLocation}
+- Time of Alert: ${timestamp}
+Status: Immediate Assistance Needed
+Emergency contacts, police, and hospitals have been notified. Please respond immediately."`;
+
+            document.getElementById('message').innerText = message; // Set the inner text of the message placeholder to the constructed message
+            document.getElementById('message').style.display = 'block'; // Make the message visible
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<h1>CafeJS</h1>
+
+<a href="/">All products</a>
+
+<h2><%= product.name %></h2>
+<p>Price: <%= product.price %></p>
+<p><%= product.description %></p>
+
+<h2>Add to cart</h2>
+<form action="" method="post">
+    <input type="hidden" name="product_id" value="<%= product.id %>">
+    <label for="quantity">Quantity</label>
+    <input type="number" name="quantity">
+    <input type="submit" value="Add to cart">
+</form>

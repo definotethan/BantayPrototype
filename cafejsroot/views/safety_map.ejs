@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safety Map Page</title>
+    <style>
+        body {
+            color: white; /* Change text color for better visibility */
+            text-align: center; /* Center text */
+        }
+
+        h1 {
+            margin-top: 20px; /* Add some space above the heading */
+        }
+
+        nav {
+            display: flex; /* Use flexbox */
+            justify-content: center; /* Center the buttons */
+            margin-top: 20px; /* Add some space above the navigation */
+        }
+
+        nav button {
+            margin: 0 10px; /* Add some space between buttons */
+        }
+
+        /* Style for the map image */
+        .map-image {
+            width: 70%; /* Make the image responsive */
+            height: auto; /* Maintain aspect ratio */
+            margin: 20px auto; /* Center the image horizontally */
+            display: block; /* Make the image a block element */
+        }
+    </style>
+</head>
+<body>
+    {{ edit_1 }}
+    <!-- <h1>Safety Map</h1> -->
+    {{ edit_2 }}
+    
+    <img src="/map.png" alt="Map" class="map-image"> <!-- Display the map image -->
+    
+    <nav>
+        <button style="position: absolute; top: 20px; left: 20px; background: none; border: none; padding: 0; cursor: pointer;" onclick="window.location.href='/report';">
+            <img src="/report icon.png" alt="Report Icon" style="width: 30px; height: 30px;"> <!-- Report icon -->
+        </button>
+        <a href="/sos">
+            <img src="/sos icon.png" alt="SOS Icon" style="width: 50px; height: 50px;"> <!-- SOS icon -->
+        </a>
+    </nav>
+</body>
+</html>
